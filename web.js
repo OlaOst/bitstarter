@@ -24,6 +24,7 @@ fs.watch('index.html', function (event, filename) {
 });
 
 app.get('/', function(request, response) {
+  console.log("Got request with useragent " + request.headers['user-agent']);
   response.send(page);
 });
 
