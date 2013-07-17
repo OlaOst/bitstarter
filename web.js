@@ -3,6 +3,8 @@ var fs = require('fs');
 
 var app = express.createServer(express.logger());
 
+app.use(express.static(__dirname + '/'));
+
 var page = fs.readFileSync('index.html').toString();
 
 // reload index.html when its content changes
