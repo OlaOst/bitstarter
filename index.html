@@ -21,6 +21,7 @@
       @media (min-width: 980px) {
         body {
           padding-top: 60px;
+          background-position: left;
         }
         .linediv-l {
           border-right: 1px white solid;
@@ -32,6 +33,9 @@
 
       /* Landscape phones and down */
       @media (max-width: 480px) {
+        body {
+          background-position: center;
+        }
         .copy {
           padding: 2.5% 10%;
         }
@@ -51,8 +55,8 @@
         font-family: 'Open Sans', Helvetica, Arial, sans-serif;
         /*background-color: #888888;*/
         background-image: url('watchcat.png');
-        background-repeat: repeat-y;
-        background-position: 0% 0%;
+        background-repeat: no-repeat;
+        background-position: center;
       }
 
       .heading, subheading {
@@ -122,16 +126,20 @@
 
       var scroller = 0;
 
-      var tooManyCats = function () {
-        scroller += 2;
-        document.body.style.backgroundPositionY = scroller + "px";
+      var scrollCats = function () {
+        var now = new Date();
+        var x = Math.floor(Math.sin(now.getTime() * 0.001) * 100 + document.width/2);
+        var y = Math.floor(Math.cos(now.getTime() * 0.001) * 100 + document.height/2);
 
-        setTimeout(tooManyCats, 100);
+        document.body.style.backgroundPositionX = x + "px";
+        document.body.style.backgroundPositionY = y + "px";
+
+        setTimeout(scrollCats, 100);
       };
     </script>
 
   </head>
-  <body onload="tooManyCats()">
+  <body onload="scrollCats()">
     <!-- Mobile-friendly navbar adapted from example. -->
     <!-- http://twitter.github.io/bootstrap/examples/starter-template.html -->
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -166,7 +174,7 @@
       <!-- www.google.com/fonts/specimen/Ubuntu#pairings -->
       <div class="row-fluid heading">
 	<div class="span12">
-	  <h1>Watchcat</h1>
+	  <h1>Watchcat 9000</h1>
 	</div>
       </div>
 
